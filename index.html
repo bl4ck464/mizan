@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="MarocCalc - Moroccan finance and banking calculators"
+  >
+
+  <title>MarocCalc</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+
+  <div class="brand">
+    <div class="logo">MC</div>
+
+    <div>
+      <h1>MarocCalc</h1>
+      <span data-i18n="subtitle">Moroccan finance toolkit</span>
+    </div>
+  </div>
+
+  <div class="header-actions">
+
+    <select
+      id="languageSelect"
+      class="language-select"
+      aria-label="Language"
+    >
+      <option value="en">EN</option>
+      <option value="fr">FR</option>
+      <option value="ar">AR</option>
+    </select>
+
+    <button
+      id="themeButton"
+      class="icon-btn"
+      type="button"
+      aria-label="Toggle dark mode"
+    >
+      🌙
+    </button>
+
+  </div>
+
+</header>
+
+
+<main class="container">
+
+  <!-- =========================
+       NAVIGATION
+  ========================== -->
+
+  <nav class="tabs" aria-label="Main navigation">
+
+    <button
+      class="tab active"
+      data-page="home"
+      type="button"
+      data-i18n="navHome"
+    >
+      Home
+    </button>
+
+    <button
+      class="tab"
+      data-page="banking"
+      type="button"
+      data-i18n="navBanking"
+    >
+      Banking
+    </button>
+
+    <button
+      class="tab"
+      data-page="guide"
+      type="button"
+      data-i18n="navGuide"
+    >
+      Guide
+    </button>
+
+  </nav>
+
+
+  <!-- =========================
+       HOME
+  ========================== -->
+
+  <section id="page-home" class="page active-page">
+
+    <div class="hero">
+
+      <h2 data-i18n="heroTitle">
+        Your Moroccan finance toolkit
+      </h2>
+
+      <p data-i18n="heroText">
+        Simple calculators for everyday financial decisions.
+      </p>
+
+    </div>
+
+
+    <div class="calculator-grid">
+
+      <button
+        class="calculator-card"
+        data-open="loan"
+        type="button"
+      >
+        <span class="card-icon">🏦</span>
+
+        <h3 data-i18n="loanTitle">
+          Loan Payment
+        </h3>
+
+        <p data-i18n="loanDescription">
+          Calculate monthly loan payments and total interest.
+        </p>
+      </button>
+
+
+      <button
+        class="calculator-card"
+        data-open="debt"
+        type="button"
+      >
+        <span class="card-icon">📊</span>
+
+        <h3 data-i18n="debtTitle">
+          Debt Ratio
+        </h3>
+
+        <p data-i18n="debtDescription">
+          Estimate your monthly debt burden.
+        </p>
+      </button>
+
+
+      <button
+        class="calculator-card"
+        data-open="capacity"
+        type="button"
+      >
+        <span class="card-icon">💰</span>
+
+        <h3 data-i18n="capacityTitle">
+          Borrowing Capacity
+        </h3>
+
+        <p data-i18n="capacityDescription">
+          Estimate an affordable loan amount.
+        </p>
+      </button>
+
+
+      <button
+        class="calculator-card"
+        data-open="early"
+        type="button"
+      >
+        <span class="card-icon">🔄</span>
+
+        <h3 data-i18n="earlyTitle">
+          Early Repayment
+        </h3>
+
+        <p data-i18n="earlyDescription">
+          Compare continuing a loan with repaying early.
+        </p>
+      </button>
+
+
+      <button
+        class="calculator-card"
+        data-open="compare"
+        type="button"
+      >
+        <span class="card-icon">⚖️</span>
+
+        <h3 data-i18n="compareTitle">
+          Loan Comparison
+        </h3>
+
+        <p data-i18n="compareDescription">
+          Compare two financing offers.
+        </p>
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       BANKING
+  ========================== -->
+
+  <section id="page-banking" class="page">
+
+    <div class="page-title">
+
+      <span>🏦</span>
+
+      <div>
+
+        <h2 data-i18n="bankingTitle">
+          Banking
+        </h2>
+
+        <p data-i18n="bankingDescription">
+          Useful loan and financing calculators.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="calculator-grid">
+
+      <button
+        class="calculator-card"
+        data-open="loan"
+        type="button"
+      >
+        <span class="card-icon">💳</span>
+
+        <h3 data-i18n="loanTitle">
+          Loan Payment
+        </h3>
+
+        <p data-i18n="loanDescription">
+          Calculate monthly payments.
+        </p>
+      </button>
+
+
+      <button
+        class="calculator-card"
+        data-open="debt"
+        type="button"
+      >
+        <span class="card-icon">📊</span>
+
+        <h3 data-i18n="debtTitle">
+          Debt Ratio
+        </h3>
+
+        <p data-i18n="debtDescription">
+          Calculate your debt burden.
+        </p>
+      </button>
+
+
+      <button
+        class="calculator-card"
+        data-open="capacity"
+        type="button"
+      >
+        <span class="card-icon">💰</span>
+
+        <h3 data-i18n="capacityTitle">
+          Borrowing Capacity
+        </h3>
+
+        <p data-i18n="capacityDescription">
+          Estimate your maximum loan.
+        </p>
+      </button>
+
+
+      <button
+        class="calculator-card"
+        data-open="early"
+        type="button"
+      >
+        <span class="card-icon">🔄</span>
+
+        <h3 data-i18n="earlyTitle">
+          Early Repayment
+        </h3>
+
+        <p data-i18n="earlyDescription">
+          Compare repayment options.
+        </p>
+      </button>
+
+
+      <button
+        class="calculator-card"
+        data-open="compare"
+        type="button"
+      >
+        <span class="card-icon">⚖️</span>
+
+        <h3 data-i18n="compareTitle">
+          Loan Comparison
+        </h3>
+
+        <p data-i18n="compareDescription">
+          Compare two loans.
+        </p>
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       GUIDE
+  ========================== -->
+
+  <section id="page-guide" class="page">
+
+    <div class="page-title">
+
+      <span>📚</span>
+
+      <div>
+
+        <h2 data-i18n="guideTitle">
+          Finance Guide
+        </h2>
+
+        <p data-i18n="guideDescription">
+          Simple explanations of common financial concepts.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="calculator-grid">
+
+      <article class="calculator-card">
+        <span class="card-icon">🏦</span>
+
+        <h3 data-i18n="guideLoan">
+          Bank Loans
+        </h3>
+
+        <p data-i18n="guideLoanText">
+          A loan allows you to borrow money and repay it over time,
+          usually with interest.
+        </p>
+      </article>
+
+
+      <article class="calculator-card">
+        <span class="card-icon">📈</span>
+
+        <h3 data-i18n="guideInterest">
+          Interest Rate
+        </h3>
+
+        <p data-i18n="guideInterestText">
+          The interest rate determines the cost of borrowing.
+        </p>
+      </article>
+
+
+      <article class="calculator-card">
+        <span class="card-icon">📊</span>
+
+        <h3 data-i18n="guideDebt">
+          Debt Ratio
+        </h3>
+
+        <p data-i18n="guideDebtText">
+          Debt ratio compares monthly debt payments with income.
+        </p>
+      </article>
+
+
+      <article class="calculator-card">
+        <span class="card-icon">🛡️</span>
+
+        <h3 data-i18n="guideGuarantees">
+          Guarantees
+        </h3>
+
+        <p data-i18n="guideGuaranteesText">
+          Guarantees and warranties depend on the product,
+          contract and applicable rules.
+        </p>
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       CALCULATOR
+  ========================== -->
+
+  <section id="page-calculator" class="page">
+
+    <div class="page-title">
+
+      <span id="calculatorIcon">🏦</span>
+
+      <div>
+
+        <h2 id="calculatorTitle">
+          Loan Payment
+        </h2>
+
+        <p id="calculatorDescription">
+          Calculate your monthly payment.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div id="calculatorContent" class="calculator">
+      <!-- JavaScript inserts calculator here -->
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       AD
+  ========================== -->
+
+  <div class="ad-container">
+
+    <span data-i18n="advertisement">
+      Advertisement
+    </span>
+
+  </div>
+
+</main>
+
+
+<!-- =========================
+     SIDE AD
+========================== -->
+
+<aside class="side-ad side-ad-right">
+
+  <span data-i18n="advertisement">
+    Advertisement
+  </span>
+
+</aside>
+
+
+<footer>
+
+  <p>
+    © 2026 MarocCalc
+  </p>
+
+  <p data-i18n="disclaimer">
+    Calculations are estimates and should not be considered financial advice.
+  </p>
+
+</footer>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>

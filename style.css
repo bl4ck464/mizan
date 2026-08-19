@@ -1,0 +1,1412 @@
+/* =========================================================
+   MarocCalc v1.0
+   Responsive CSS
+   Mobile + Tablet + Desktop
+   Light/Dark + RTL support
+========================================================= */
+
+/* =========================
+   VARIABLES
+========================= */
+
+:root {
+  --bg: #f1f5f9;
+  --surface: #ffffff;
+  --surface-2: #f8fafc;
+
+  --text: #0f172a;
+  --muted: #64748b;
+
+  --border: #e2e8f0;
+
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+
+  --success: #16a34a;
+  --danger: #dc2626;
+
+  --header-height: 72px;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+
+  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 5px 20px rgba(15, 23, 42, 0.08);
+
+  --transition: 0.18s ease;
+}
+
+[data-theme="dark"] {
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --surface-2: #172033;
+
+  --text: #f8fafc;
+  --muted: #94a3b8;
+
+  --border: #334155;
+
+  --primary: #3b82f6;
+  --primary-hover: #60a5fa;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.18);
+  --shadow-md: 0 5px 25px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================
+   RESET
+========================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+
+  min-height: 100vh;
+
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+
+  background: var(--bg);
+  color: var(--text);
+
+  line-height: 1.5;
+
+  transition:
+    background var(--transition),
+    color var(--transition);
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+input,
+select {
+  color-scheme: light;
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] select {
+  color-scheme: dark;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  width: 100%;
+  min-height: var(--header-height);
+
+  background: color-mix(
+    in srgb,
+    var(--surface) 94%,
+    transparent
+  );
+
+  border-bottom: 1px solid var(--border);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding:
+    12px
+    max(20px, calc((100vw - 1100px) / 2));
+}
+
+
+/* =========================
+   BRAND
+========================= */
+
+.brand {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  min-width: 0;
+}
+
+.logo {
+  width: 42px;
+  height: 42px;
+
+  flex: 0 0 42px;
+
+  border-radius: 12px;
+
+  display: grid;
+  place-items: center;
+
+  background: var(--primary);
+  color: white;
+
+  font-size: 14px;
+  font-weight: 800;
+
+  user-select: none;
+}
+
+.brand h1 {
+  margin: 0;
+
+  font-size: 20px;
+  line-height: 1.1;
+
+  white-space: nowrap;
+}
+
+.brand span {
+  display: block;
+
+  margin-top: 3px;
+
+  color: var(--muted);
+
+  font-size: 12px;
+
+  white-space: nowrap;
+}
+
+
+/* =========================
+   HEADER ACTIONS
+========================= */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  flex-shrink: 0;
+}
+
+.icon-btn,
+.language-select {
+  height: 38px;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+
+  background: var(--surface);
+  color: var(--text);
+
+  transition:
+    background var(--transition),
+    border-color var(--transition),
+    transform var(--transition);
+}
+
+.icon-btn {
+  width: 38px;
+
+  padding: 0;
+
+  display: grid;
+  place-items: center;
+
+  cursor: pointer;
+
+  font-size: 17px;
+}
+
+.icon-btn:hover,
+.language-select:hover {
+  border-color: var(--primary);
+}
+
+.icon-btn:active {
+  transform: scale(0.95);
+}
+
+.language-select {
+  min-width: 58px;
+
+  padding: 0 9px;
+
+  cursor: pointer;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  outline: none;
+}
+
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.container {
+  width: min(1100px, calc(100% - 30px));
+
+  margin: 0 auto;
+
+  padding:
+    22px
+    0
+    50px;
+}
+
+
+/* =========================
+   NAVIGATION TABS
+========================= */
+
+.tabs {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  overflow-x: auto;
+
+  padding:
+    0
+    2px
+    18px;
+
+  scrollbar-width: thin;
+}
+
+.tabs::-webkit-scrollbar {
+  height: 4px;
+}
+
+.tabs::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 20px;
+}
+
+.tab {
+  flex: 0 0 auto;
+
+  border: 0;
+
+  background: transparent;
+  color: var(--muted);
+
+  padding: 9px 14px;
+
+  border-radius: var(--radius-sm);
+
+  cursor: pointer;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  transition:
+    background var(--transition),
+    color var(--transition);
+}
+
+.tab:hover {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.tab.active {
+  background: var(--primary);
+  color: white;
+}
+
+.tab:active {
+  transform: scale(0.98);
+}
+
+
+/* =========================
+   PAGES
+========================= */
+
+.page {
+  display: none;
+
+  animation: pageIn 0.18s ease;
+}
+
+.active-page {
+  display: block;
+}
+
+@keyframes pageIn {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+
+  padding: 30px;
+
+  margin-bottom: 20px;
+
+  box-shadow: var(--shadow-md);
+}
+
+.hero h2 {
+  margin: 0 0 8px;
+
+  font-size: clamp(24px, 4vw, 34px);
+
+  line-height: 1.15;
+}
+
+.hero p {
+  margin: 0;
+
+  max-width: 650px;
+
+  color: var(--muted);
+
+  font-size: 15px;
+}
+
+
+/* =========================
+   CALCULATOR GRID
+========================= */
+
+.calculator-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 14px;
+}
+
+
+/* =========================
+   CALCULATOR CARD
+========================= */
+
+.calculator-card {
+  width: 100%;
+
+  text-align: left;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+
+  padding: 20px;
+
+  cursor: pointer;
+
+  color: var(--text);
+
+  box-shadow: var(--shadow-sm);
+
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition),
+    background var(--transition);
+}
+
+.calculator-card:hover {
+  transform: translateY(-2px);
+
+  border-color: var(--primary);
+
+  box-shadow: var(--shadow-md);
+}
+
+.calculator-card:active {
+  transform: translateY(0);
+}
+
+.calculator-card:focus-visible {
+  outline: 3px solid
+    color-mix(in srgb, var(--primary) 30%, transparent);
+
+  outline-offset: 2px;
+}
+
+.card-icon {
+  display: block;
+
+  font-size: 28px;
+
+  margin-bottom: 14px;
+}
+
+.calculator-card h3 {
+  margin: 0 0 5px;
+
+  font-size: 16px;
+}
+
+.calculator-card p {
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: 13px;
+
+  line-height: 1.45;
+}
+
+
+/* =========================
+   PAGE TITLE
+========================= */
+
+.page-title {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+
+  padding: 20px;
+
+  margin-bottom: 16px;
+
+  box-shadow: var(--shadow-sm);
+}
+
+.page-title > span {
+  width: 48px;
+  height: 48px;
+
+  flex: 0 0 48px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 12px;
+
+  background: var(--surface-2);
+
+  font-size: 27px;
+}
+
+.page-title h2 {
+  margin: 0 0 3px;
+
+  font-size: 21px;
+
+  line-height: 1.2;
+}
+
+.page-title p {
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: 13px;
+}
+
+
+/* =========================
+   CALCULATOR PANEL
+========================= */
+
+.calculator {
+  width: 100%;
+  max-width: 700px;
+
+  margin: 0 auto;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+
+  padding: 24px;
+
+  box-shadow: var(--shadow-md);
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.form-group {
+  margin-bottom: 17px;
+}
+
+.form-group:last-of-type {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+
+/* =========================
+   MONEY INPUT
+========================= */
+
+.input-money {
+  width: 100%;
+
+  display: flex;
+  align-items: stretch;
+
+  overflow: hidden;
+
+  border: 1px solid var(--border);
+  border-radius: 10px;
+
+  background: var(--surface-2);
+
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+.input-money:focus-within {
+  border-color: var(--primary);
+
+  box-shadow:
+    0 0 0 3px
+    color-mix(in srgb, var(--primary) 12%, transparent);
+}
+
+.input-money input {
+  flex: 1;
+
+  min-width: 0;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  color: var(--text);
+
+  padding: 12px;
+
+  font-size: 16px;
+}
+
+.input-money input::placeholder {
+  color: var(--muted);
+  opacity: 0.7;
+}
+
+.input-money span {
+  min-width: 58px;
+
+  display: grid;
+  place-items: center;
+
+  padding: 0 12px;
+
+  color: var(--muted);
+
+  font-size: 13px;
+  font-weight: 600;
+
+  border-inline-start: 1px solid var(--border);
+}
+
+
+/* =========================
+   TWO INPUTS
+========================= */
+
+.two-inputs {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto
+    minmax(0, 1fr);
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+.two-inputs input {
+  width: 100%;
+
+  border: 1px solid var(--border);
+  border-radius: 10px;
+
+  background: var(--surface-2);
+
+  color: var(--text);
+
+  padding: 12px;
+
+  font-size: 16px;
+
+  outline: none;
+
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+.two-inputs input:focus {
+  border-color: var(--primary);
+
+  box-shadow:
+    0 0 0 3px
+    color-mix(in srgb, var(--primary) 12%, transparent);
+}
+
+.two-inputs span {
+  color: var(--muted);
+
+  font-weight: 600;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.primary-btn,
+.secondary-btn {
+  min-height: 46px;
+
+  border-radius: 10px;
+
+  padding: 11px 17px;
+
+  cursor: pointer;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  transition:
+    background var(--transition),
+    border-color var(--transition),
+    transform var(--transition);
+}
+
+.primary-btn {
+  width: 100%;
+
+  border: 0;
+
+  background: var(--primary);
+
+  color: white;
+}
+
+.primary-btn:hover {
+  background: var(--primary-hover);
+}
+
+.primary-btn:active,
+.secondary-btn:active {
+  transform: scale(0.99);
+}
+
+.secondary-btn {
+  background: var(--surface-2);
+
+  color: var(--text);
+
+  border: 1px solid var(--border);
+}
+
+.secondary-btn:hover {
+  border-color: var(--primary);
+}
+
+.button-row {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 10px;
+}
+
+
+/* =========================
+   RESULTS
+========================= */
+
+.result {
+  margin-top: 20px;
+
+  padding: 18px;
+
+  border-radius: var(--radius-md);
+
+  background: var(--surface-2);
+
+  border: 1px solid var(--border);
+
+  overflow-wrap: anywhere;
+}
+
+.result-title {
+  color: var(--muted);
+
+  font-size: 13px;
+
+  margin-bottom: 5px;
+}
+
+.result-main {
+  color: var(--text);
+
+  font-size: clamp(25px, 5vw, 32px);
+
+  line-height: 1.15;
+
+  font-weight: 800;
+
+  margin-bottom: 14px;
+}
+
+.result-row {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding: 9px 0;
+
+  border-top: 1px solid var(--border);
+
+  font-size: 14px;
+}
+
+.result-row span:first-child {
+  color: var(--muted);
+}
+
+.result-row strong {
+  text-align: right;
+}
+
+
+/* =========================
+   INFO BOX
+========================= */
+
+.info-box {
+  width: 100%;
+  max-width: 700px;
+
+  margin: 16px auto;
+
+  padding: 15px;
+
+  border-radius: var(--radius-md);
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  font-size: 13px;
+}
+
+.info-box strong {
+  font-size: 13px;
+}
+
+.info-box p {
+  margin: 5px 0 0;
+
+  color: var(--muted);
+
+  line-height: 1.55;
+}
+
+
+/* =========================
+   DESKTOP SIDE AD
+========================= */
+
+.side-ad {
+  position: fixed;
+
+  top: calc(var(--header-height) + 35px);
+
+  width: 160px;
+  height: 600px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: var(--surface);
+
+  border: 1px dashed var(--border);
+
+  border-radius: 10px;
+
+  color: var(--muted);
+
+  font-size: 11px;
+
+  z-index: 20;
+
+  overflow: hidden;
+}
+
+.side-ad-right {
+  right: 16px;
+}
+
+.side-ad-left {
+  display: none;
+}
+
+
+/*
+  Only show the side ad when there is
+  enough horizontal space.
+*/
+
+@media (min-width: 1450px) {
+  .side-ad-right {
+    display: flex;
+  }
+}
+
+@media (max-width: 1449px) {
+  .side-ad-right {
+    display: none;
+  }
+}
+
+
+/* =========================
+   FALLBACK AD CONTAINER
+========================= */
+
+.ad-container {
+  width: 100%;
+
+  max-width: 728px;
+
+  min-height: 60px;
+
+  margin: 30px auto 0;
+
+  display: grid;
+
+  place-items: center;
+
+  border: 1px dashed var(--border);
+
+  border-radius: 10px;
+
+  color: var(--muted);
+
+  font-size: 11px;
+}
+
+
+/* =========================
+   HIDDEN
+========================= */
+
+.hidden {
+  display: none !important;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  text-align: center;
+
+  color: var(--muted);
+
+  font-size: 12px;
+
+  padding: 20px 15px 30px;
+}
+
+footer p {
+  margin: 0;
+}
+
+footer p + p {
+  margin-top: 4px;
+}
+
+
+/* =========================================================
+   RTL / ARABIC
+========================================================= */
+
+[dir="rtl"] {
+  direction: rtl;
+}
+
+[dir="rtl"] .brand {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .page-title {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .calculator-card {
+  text-align: right;
+}
+
+[dir="rtl"] .result-row {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .result-row strong {
+  text-align: left;
+}
+
+[dir="rtl"] .input-money span {
+  border-inline-start: 0;
+  border-inline-end: 1px solid var(--border);
+}
+
+[dir="rtl"] .tabs {
+  direction: rtl;
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+@media (min-width: 1200px) {
+  .container {
+    padding-top: 24px;
+  }
+
+  .calculator-card {
+    padding: 22px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .header {
+    padding:
+      11px
+      20px;
+  }
+
+  .container {
+    width: min(100% - 30px, 760px);
+  }
+
+  .calculator-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .side-ad {
+    display: none !important;
+  }
+}
+
+
+/* =========================================================
+   SMALL TABLET / LARGE PHONE
+========================================================= */
+
+@media (max-width: 650px) {
+
+  :root {
+    --header-height: 64px;
+  }
+
+  .header {
+    min-height: var(--header-height);
+
+    padding:
+      9px
+      14px;
+
+    gap: 10px;
+  }
+
+  .logo {
+    width: 38px;
+    height: 38px;
+
+    flex-basis: 38px;
+
+    border-radius: 10px;
+  }
+
+  .brand {
+    gap: 9px;
+  }
+
+  .brand h1 {
+    font-size: 18px;
+  }
+
+  .brand span {
+    display: none;
+  }
+
+  .container {
+    width: calc(100% - 20px);
+
+    padding-top: 15px;
+    padding-bottom: 35px;
+  }
+
+  .tabs {
+    padding-bottom: 14px;
+  }
+
+  .tab {
+    padding: 8px 12px;
+
+    font-size: 13px;
+  }
+
+  .hero {
+    padding: 22px;
+
+    border-radius: 16px;
+  }
+
+  .hero h2 {
+    font-size: 26px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .calculator-grid {
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+  }
+
+  .calculator-card {
+    padding: 17px;
+
+    border-radius: 14px;
+  }
+
+  .card-icon {
+    margin-bottom: 9px;
+  }
+
+  .page-title {
+    padding: 17px;
+
+    gap: 11px;
+  }
+
+  .page-title > span {
+    width: 42px;
+    height: 42px;
+
+    flex-basis: 42px;
+
+    font-size: 23px;
+  }
+
+  .page-title h2 {
+    font-size: 18px;
+  }
+
+  .calculator {
+    padding: 18px;
+
+    border-radius: 14px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .button-row {
+    grid-template-columns: 1fr;
+  }
+
+  .ad-container {
+    margin-top: 20px;
+
+    min-height: 60px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .header-actions {
+    gap: 5px;
+  }
+
+  .icon-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .language-select {
+    height: 36px;
+
+    min-width: 52px;
+
+    padding:
+      0 6px;
+  }
+
+  .container {
+    width: calc(100% - 16px);
+
+    padding-top: 12px;
+  }
+
+  .tabs {
+    gap: 4px;
+
+    margin-left: -2px;
+    margin-right: -2px;
+
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+
+  .tab {
+    padding: 8px 10px;
+
+    font-size: 12px;
+  }
+
+  .hero {
+    padding: 19px;
+
+    margin-bottom: 12px;
+  }
+
+  .hero h2 {
+    font-size: 23px;
+  }
+
+  .calculator-card {
+    display: block;
+
+    min-height: 100px;
+  }
+
+  .page-title {
+    padding: 15px;
+
+    margin-bottom: 12px;
+  }
+
+  .calculator {
+    padding: 15px;
+  }
+
+  .input-money input,
+  .two-inputs input {
+    font-size: 16px;
+  }
+
+  .input-money span {
+    min-width: 50px;
+
+    padding:
+      0 8px;
+  }
+
+  .result {
+    padding: 15px;
+  }
+
+  .result-main {
+    font-size: 26px;
+  }
+
+  .result-row {
+    font-size: 13px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .brand h1 {
+    font-size: 16px;
+  }
+
+  .logo {
+    width: 35px;
+    height: 35px;
+
+    flex-basis: 35px;
+  }
+
+  .header {
+    padding:
+      8px 10px;
+  }
+
+  .container {
+    width: calc(100% - 12px);
+  }
+
+  .calculator {
+    padding: 13px;
+  }
+
+  .page-title {
+    padding: 13px;
+  }
+
+  .page-title > span {
+    width: 38px;
+    height: 38px;
+
+    flex-basis: 38px;
+
+    font-size: 21px;
+  }
+
+  .two-inputs {
+    gap: 5px;
+  }
+
+  .two-inputs span {
+    font-size: 12px;
+  }
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+========================================================= */
+
+@media (hover: none) {
+
+  .calculator-card:hover {
+    transform: none;
+
+    border-color: var(--border);
+
+    box-shadow: var(--shadow-sm);
+  }
+
+  .calculator-card:active {
+    transform: scale(0.99);
+
+    border-color: var(--primary);
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+  }
+}
