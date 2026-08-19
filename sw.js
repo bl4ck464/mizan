@@ -13,107 +13,17 @@ self.addEventListener("install", event => {
     caches.open(CACHE_NAME)
       .then(cache => cache.addAll(FILES_TO_CACHE))
   );
-
-  self.skipWaiting();
 });
-
 
 self.addEventListener("activate", event => {
-
-  event.waitUntil(
-
-    caches.keys().then(keys =>
-
-      Promise.all(
-        keys
-          .filter(key => key !== CACHE_NAME)
-          .map(key => caches.delete(key))
-      )
-
-    )
-
-  );
-
-  self.clients.claim();
+  event.waitUntil(self.clients.claim());
 });
-
 
 self.addEventListener("fetch", event => {
-
-  if (event.request.method !== "GET") {
-    return;
-  }
-
   event.respondWith(
-
     caches.match(event.request)
-      .then(cached => {
-
-        if (cached) {
-          return cached;
-        }
-
-        return fetch(event.request)
-          .then(response => {
-
-            if (
-              !response ||
-              response.status !== 200
-            ) {
-              return response;
-            }
-
-            const copy = response.clone();
-
-            caches.open(CACHE_NAME)
-              .then(cache => {
-                cache.put(
-                  event.request,
-                  copy
-                );
-              });
-
-            return response;
-
-          })
-          .catch(() => {
-
-            return caches.match("./index.html");
-
-          });
-
+      .then(cachedResponse => {
+        return cachedResponse || fetch(event.request);
       })
-
   );
-
 });
-/* =========================================================
-   PWA SERVICE WORKER
-========================================================= */
-
-if ("serviceWorker" in navigator) {
-
-  window.addEventListener("load", () => {
-
-    navigator.serviceWorker
-      .register("./sw.js")
-      .then(registration => {
-
-        console.log(
-          "MarocCalc PWA ready:",
-          registration.scope
-        );
-
-      })
-      .catch(error => {
-
-        console.error(
-          "Service worker registration failed:",
-          error
-        );
-
-      });
-
-  });
-
-}
